@@ -6,10 +6,10 @@ public class AIController : MonoBehaviour
 {
     [SerializeField] private Camera cam;
 
-    [SerializeField] private GameObject currectObjective;
-
     [SerializeField] private GameObject targetObj;
     private Transform targetTransform;
+
+    [SerializeField] private GameObject currectObjective;
 
     private NavMeshAgent agent;
 
@@ -26,23 +26,33 @@ public class AIController : MonoBehaviour
     {
         Move();
 
+        /*if(AtDestination())
+        {
+            currectObjective = null;
+        }*/
+
+        Debug.Log(currectObjective);
+    }
+
+    private bool AtDestination()
+    {
         if (!agent.pathPending)
         {
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 if (!agent.hasPath || agent.velocity.sqrMagnitude == 0f)
                 {
-                    Debug.Log("At destination");
-                    // set target to null
+                    return true;
                 }
             }
         }
+        return false;
     }
 
     private void Move()
     {
         // if there is no current objective use raycast to determine where the agent should move to
-        if(currectObjective == null)
+        /*if(currectObjective == null)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -60,8 +70,18 @@ public class AIController : MonoBehaviour
         else
         {
             targetObj.transform.position = currectObjective.transform.position;
-        }
+        }*/
 
         agent.SetDestination(targetTransform.position);
+    }
+
+    public GameObject GetCurrentObjective()
+    {
+        return currectObjective;
+    }
+    public void SetCurrentObjective(GameObject _currentObjective)
+    {
+        currectObjective = _currentObjective;
+        targetObj.transform.position = currectObjective.transform.position;
     }
 }

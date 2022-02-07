@@ -19,7 +19,7 @@ public class Checkpoint : MonoBehaviour
     {
         if(other.CompareTag("Player"))
         {
-            Debug.Log("Updated checkpoint");
+            //Debug.Log("Updated checkpoint");
             checkpointManager.SetCurrentCheckpoint(this.gameObject);
         }
     }

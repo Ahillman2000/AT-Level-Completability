@@ -751,8 +751,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7af16d3f85703946bbb678f303a2763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prerequesites:
-  - {fileID: 1558570909}
+  parentObjective: {fileID: 0}
+  childObjectives: []
 --- !u!1 &1411481825
 GameObject:
   m_ObjectHideFlags: 0
@@ -851,6 +851,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1057777025}
     m_Modifications:
+    - target: {fileID: 4185728121337257506, guid: d0b9500669b24e24ca6da8208bfd01a3, type: 3}
+      propertyPath: rotationSpeed
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185728121337257506, guid: d0b9500669b24e24ca6da8208bfd01a3, type: 3}
+      propertyPath: rotationAngle.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5686302292376577084, guid: d0b9500669b24e24ca6da8208bfd01a3, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -923,7 +931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7af16d3f85703946bbb678f303a2763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prerequesites: []
+  parentObjective: {fileID: 0}
+  childObjectives: []
 --- !u!1001 &1658420442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1072,6 +1081,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1945739514}
   - component: {fileID: 1945739513}
+  - component: {fileID: 1945739515}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -1106,6 +1116,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1945739515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945739512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a086ae35dd3e9f449234385609607ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WinObjective: {fileID: 1264681766}
 --- !u!114 &166584643726583593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1182,8 +1205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 963194227}
-  currectObjective: {fileID: 0}
   targetObj: {fileID: 1411481825}
+  currectObjective: {fileID: 0}
 --- !u!195 &5963290509192837025
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1236,7 +1259,7 @@ GameObject:
   - component: {fileID: 5963290509505115444}
   m_Layer: 6
   m_Name: player_body
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1335,7 +1358,7 @@ GameObject:
   - component: {fileID: 5963290509574836603}
   m_Layer: 6
   m_Name: eyes
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1434,7 +1457,7 @@ GameObject:
   - component: {fileID: 5963290509879227320}
   m_Layer: 6
   m_Name: eye_left
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1527,7 +1550,7 @@ GameObject:
   - component: {fileID: 5963290509907784255}
   m_Layer: 6
   m_Name: Cam Target
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1637,7 +1660,7 @@ GameObject:
   - component: {fileID: 5963290510668092961}
   m_Layer: 6
   m_Name: eye_right
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1680,7 +1703,7 @@ GameObject:
   - component: {fileID: 6312526608711538377}
   m_Layer: 6
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

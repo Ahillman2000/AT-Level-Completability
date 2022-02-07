@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Objective : MonoBehaviour
 {
-    private bool completed;
-    [SerializeField] private Objective[] prerequesites;
+    public Objective parentObjective;
+    public Objective[] childObjectives;
+
+    private bool completed = false;
 
     public void CompleteObjective()
     {
         completed = true;
     }
 
-    public bool ObjectiveComplete()
+    public bool IsCompleted()
     {
         return completed;
     }
