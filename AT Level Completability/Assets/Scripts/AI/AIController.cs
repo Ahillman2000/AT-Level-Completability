@@ -9,7 +9,8 @@ public class AIController : MonoBehaviour
     [SerializeField] private GameObject targetObj;
     private Transform targetTransform;
 
-    [SerializeField] private GameObject currectObjective;
+    [SerializeField] private ObjectiveManager objectiveManager;
+    //[SerializeField] private GameObject currectObjective;
 
     private NavMeshAgent agent;
 
@@ -31,7 +32,7 @@ public class AIController : MonoBehaviour
             currectObjective = null;
         }*/
 
-        Debug.Log(currectObjective);
+        //Debug.Log(currectObjective);
     }
 
     private bool AtDestination()
@@ -72,10 +73,13 @@ public class AIController : MonoBehaviour
             targetObj.transform.position = currectObjective.transform.position;
         }*/
 
-        agent.SetDestination(targetTransform.position);
+        GameObject objectiveGameObject = objectiveManager.GetCurrentObjective().gameObject;
+        agent.SetDestination(objectiveGameObject.transform.position);
+
+        //agent.SetDestination(targetTransform.position);
     }
 
-    public GameObject GetCurrentObjective()
+    /*public GameObject GetCurrentObjective()
     {
         return currectObjective;
     }
@@ -83,5 +87,5 @@ public class AIController : MonoBehaviour
     {
         currectObjective = _currentObjective;
         targetObj.transform.position = currectObjective.transform.position;
-    }
+    }*/
 }

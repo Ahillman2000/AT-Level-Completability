@@ -7,7 +7,7 @@ public class Objective : MonoBehaviour
     public Objective parentObjective;
     public Objective[] childObjectives;
 
-    private bool completed = false;
+    [SerializeField] private bool completed = false;
 
     public void CompleteObjective()
     {
@@ -17,5 +17,33 @@ public class Objective : MonoBehaviour
     public bool IsCompleted()
     {
         return completed;
+    }
+
+    public bool HasParentObjective()
+    {
+        if (parentObjective != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public Objective GetParentObjective()
+    {
+        return parentObjective;
+    }
+
+    public bool HasChildObjectives()
+    {
+        if (childObjectives != null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public Objective[] GetChildObjectives()
+    {
+        return childObjectives;
     }
 }
