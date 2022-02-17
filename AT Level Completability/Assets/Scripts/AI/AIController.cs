@@ -4,35 +4,30 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
+    //[SerializeField] private Camera cam;
 
-    [SerializeField] private GameObject targetObj;
-    private Transform targetTransform;
+    //[SerializeField] private GameObject targetObj;
+    //private Transform targetTransform;
 
     [SerializeField] private ObjectiveManager objectiveManager;
     //[SerializeField] private GameObject currectObjective;
 
     private NavMeshAgent agent;
+    NavMeshPath navMeshPath;
 
     void Start()
     {
         agent = this.GetComponent<NavMeshAgent>();
-        targetTransform = targetObj.transform;
+        navMeshPath = new NavMeshPath();
+        //targetTransform = targetObj.transform;
 
         // Set current target location to player's position
-        targetObj.transform.position = this.gameObject.transform.position;
+        //targetObj.transform.position = this.gameObject.transform.position;
     }
 
     void Update()
     {
         Move();
-
-        /*if(AtDestination())
-        {
-            currectObjective = null;
-        }*/
-
-        //Debug.Log(currectObjective);
     }
 
     private bool AtDestination()
@@ -73,10 +68,21 @@ public class AIController : MonoBehaviour
             targetObj.transform.position = currectObjective.transform.position;
         }*/
 
-        GameObject objectiveGameObject = objectiveManager.GetCurrentObjective().gameObject;
-        agent.SetDestination(objectiveGameObject.transform.position);
-
         //agent.SetDestination(targetTransform.position);
+
+        GameObject objectiveGameObject = objectiveManager.GetCurrentObjective().gameObject;
+
+        if (agent.CalculatePath(objectiveGameObject.transform.position, navMeshPath) && navMeshPath.status == NavMeshPathStatus.PathComplete)
+        {
+            //move to target
+            Debug.Log("path is valid");
+            agent.SetDestination(objectiveGameObject.transform.position);
+        }
+        else
+        {
+            //Fail condition here
+            Debug.Log("path is invalid");
+        }
     }
 
     /*public GameObject GetCurrentObjective()

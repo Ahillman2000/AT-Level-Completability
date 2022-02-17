@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4335598202602372667}
   - component: {fileID: 4335598202602372664}
   - component: {fileID: 4335598202602372666}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Double Jump Powerup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 4340312508179075123}
   - component: {fileID: 4349550676219763565}
   - component: {fileID: 4357436436336606269}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: double jump object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

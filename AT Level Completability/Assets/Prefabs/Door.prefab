@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8493635316095782126}
   - component: {fileID: 8493635316095782127}
   - component: {fileID: 8493635316095782120}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8493635316689390526}
   - component: {fileID: 8493635316689390527}
   - component: {fileID: 8493635316689390520}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -154,4 +154,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e98d5b918d023648b9fb4c106254873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requiredKey: {fileID: 0}
   openCloseSpeed: 0.8
