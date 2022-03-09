@@ -9,7 +9,6 @@ public class Door : MonoBehaviour
     private bool open = false;
     private Quaternion targetRotation;
     [SerializeField] float openCloseSpeed = 0.5f;
-
     void Start()
     {
         targetRotation = this.transform.rotation * Quaternion.Euler(0, -90, 0);

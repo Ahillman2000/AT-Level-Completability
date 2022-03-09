@@ -4,25 +4,17 @@ using UnityEngine.AI;
 
 public class AIController : MonoBehaviour
 {
-    //[SerializeField] private Camera cam;
-
-    //[SerializeField] private GameObject targetObj;
-    //private Transform targetTransform;
-
     [SerializeField] private ObjectiveManager objectiveManager;
-    //[SerializeField] private GameObject currectObjective;
 
     private NavMeshAgent agent;
     NavMeshPath navMeshPath;
+
+    bool problemDebugged = false;
 
     void Start()
     {
         agent = this.GetComponent<NavMeshAgent>();
         navMeshPath = new NavMeshPath();
-        //targetTransform = targetObj.transform;
-
-        // Set current target location to player's position
-        //targetObj.transform.position = this.gameObject.transform.position;
     }
 
     void Update()
@@ -47,29 +39,6 @@ public class AIController : MonoBehaviour
 
     private void Move()
     {
-        // if there is no current objective use raycast to determine where the agent should move to
-        /*if(currectObjective == null)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    //Debug.Log(hit.point);
-                    targetObj.transform.position = hit.point;
-                }
-            }
-        }
-        // if there is a current object then agent move towards it
-        else
-        {
-            targetObj.transform.position = currectObjective.transform.position;
-        }*/
-
-        //agent.SetDestination(targetTransform.position);
-
         GameObject objectiveGameObject = objectiveManager.GetCurrentObjective().gameObject;
 
         if (agent.CalculatePath(objectiveGameObject.transform.position, navMeshPath) && navMeshPath.status == NavMeshPathStatus.PathComplete)
@@ -80,18 +49,18 @@ public class AIController : MonoBehaviour
         }
         else
         {
-            //Fail condition here
-            Debug.Log("path is invalid");
+            if(problemDebugged == false)
+            {
+                //Fail condition here
+                //Debug.LogWarning("path is invalid");
+
+                //UnityEditor.EditorGUIUtility.PingObject(objectiveGameObject);
+                //UnityEditor.Highlighter.Highlight("Hierarchy", objectiveGameObject.name);
+
+                Debug.LogWarning("The current objective: " + objectiveGameObject.name + " is unable to be reached due to an invalid path", objectiveGameObject);
+
+                problemDebugged = true;
+            }
         }
     }
-
-    /*public GameObject GetCurrentObjective()
-    {
-        return currectObjective;
-    }
-    public void SetCurrentObjective(GameObject _currentObjective)
-    {
-        currectObjective = _currentObjective;
-        targetObj.transform.position = currectObjective.transform.position;
-    }*/
 }

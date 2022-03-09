@@ -105,14 +105,14 @@ public class ObjectiveManager : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log("Current objective: " + currentObjective + ", completed status = " + currentObjective.IsCompleted());
+        //Debug.Log("Current objective: " + currentObjective + ", completed status = " + currentObjective.IsCompleted());
 
         if(currentObjective.IsCompleted() == false)
         {
             if (currentObjective.HasChildObjectives())
             {
                 Objective[] ObjectivesToSearch = currentObjective.GetChildObjectives();
-                int numberOfObjectives = ObjectivesToSearch.Length /*- 1*/;
+                int numberOfObjectives = ObjectivesToSearch.Length;
 
                 for (int i = 0; i < numberOfObjectives; i++)
                 {
